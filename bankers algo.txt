@@ -1,0 +1,22 @@
+1. Input prn, resn
+2. For i = 0 to prn-1:
+    a. Input the allocated resources for process i.
+    b. Input the max need for process i.
+    c. Calculate need[i] = max[i] - alloc[i]
+3. Input the available resources array avail.
+4. Initialize:
+    a. comp = 1
+    b. dl = 1
+    c. sec = 0
+5. While True:
+    a. Set comp = 1, dl = 1
+    b. For each process i:
+        i. If process i can be executed (need[i] <= avail[i] and exec[i] = 0):
+            A. Update avail = avail + alloc[i]
+            B. Mark exec[i] = 1
+            C. Add process i to safe sequence seq
+        ii. If process i cannot be executed, set comp = 0
+        iii. If process i executed, set dl = 0
+    c. If comp = 1 or dl = 1, exit the loop.
+6. If dl = 1, print "Dead Lock!!!"
+7. Else, print the safe sequence stored in seq.
