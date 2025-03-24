@@ -1,26 +1,22 @@
-1. Input nb (number of blocks), np (number of processes)
-2. Input the size of each block and store in blk[] array.
-3. Input the size of each process and store in proc[] array.
+1. Input nb (number of blocks) and np (number of processes).
+2. Input blk[nb] (block sizes).
+3. Input proc[np] (process sizes).
+4. Copy blk[] to blk_cpy[] for reuse.
 
-4. Display choices:
-   a. 0 - Exit
-   b. 1 - First Fit
-   c. 2 - Best Fit
+5. First Fit Algorithm:
+   a. Initialize allc[np] = -1.
+   b. For each process i:
+      i. Find the first block j where blk[j] >= proc[i].
+      ii. If found, allocate process i to block j.
+      iii. Update blk[j] -= proc[i] and store allc[i] = j.
+   c. Print allocation results.
 
-5. Loop until the user selects option 0 to exit:
-   a. If choice is 1 (First Fit):
-      i. For each process:
-         - Search for the first block that fits the process size.
-         - If a block is found, allocate it and update the block size.
-         - If no block can accommodate, mark process as not allocated.
-      ii. Display the allocation result.
-   
-   b. If choice is 2 (Best Fit):
-      i. For each process:
-         - Search for the best block that fits the process size with the least remaining space.
-         - If a block is found, allocate it and update the block size.
-         - If no block can accommodate, mark process as not allocated.
-      ii. Display the allocation result.
+6. Restore blk_cpy for Best Fit.
 
-6. Repeat the process until the user selects 0 to exit.
-
+7. Best Fit Algorithm:
+   a. Initialize allc[np] = -1.
+   b. For each process i:
+      i. Find the smallest block j where blk[j] >= proc[i].
+      ii. If found, allocate process i to block j.
+      iii. Update blk[j] -= proc[i] and store allc[i] = j.
+   c. Print allocation results.

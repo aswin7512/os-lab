@@ -1,0 +1,19 @@
+1. Input n (reference string length)
+2. Input reference string rs[n]
+3. Input w (frame width)
+
+4. Initialize:
+   a. f[w] = -1 (empty frames)
+   b. lat[w] = 0 (last used times)
+   c. hc = 0 (hit count), fc = 0 (fault count)
+
+5. For each page rs[i]:
+   a. Check if rs[i] exists in f[]
+      - If found, update lat[j] and count as hit.
+   b. If not found:
+      - Find the least recently used (LRU) page using lat[].
+      - Replace it with rs[i], update lat[].
+      - Count as a page fault.
+
+6. Print each step: page request, frame state, hit or fault count.
+

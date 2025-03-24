@@ -1,4 +1,5 @@
 #include<stdio.h>
+#include<string.h>
 
 void ffit(int blk[], int proc[], int nb, int np) {
 	int allc[np];
@@ -58,26 +59,47 @@ int main() {
 		printf("Enter size of Process %d: ", i+1);
 		scanf("%d", &proc[i]);
 	}
-	printf("###\nChoices...\n\
-	0. Exit\n\
-	1. First fit\n\
-	2. Best fit\n\
-	Enter your choice: ");
-	scanf("%d", &ch);
-	while (1) {
-		switch (ch){
-			case 0: printf("Exiting...\n");
-				return 0;
-			
-			case 1: printf("Implementing First Fit...\n");
-				ffit(blk, proc, nb, np);
-				break;
-			
-			case 2: printf("Implementing Best Fit...\n");
-				bfit(blk, proc, nb, np);
-				break;
-			
-			default: printf("Please Enter a valid choice...\n");
-		}
-	}
+	int blk_cpy[nb];
+	memcpy(blk_cpy,blk,sizeof(int)*nb);
+	printf("\nImplementing First Fit...\n\n");
+	ffit(blk_cpy, proc, nb, np);
+	printf("\nImplementing Best Fit...\n\n");
+	bfit(blk_cpy, proc, nb, np);
 }
+
+
+/*
+
+Enter No. of blocks and No. of processes: 4 5
+Enter size of block 0: 200
+Enter size of block 1: 350
+Enter size of block 2: 140
+Enter size of block 3: 230
+###
+Enter size of Process 1: 130
+Enter size of Process 2: 100
+Enter size of Process 3: 90
+Enter size of Process 4: 400
+Enter size of Process 5: 200
+
+Implementing First Fit...
+
+-1: Not Allocated...
+ PNo.  P Size Block No.
+    1       5         0
+    2     100         0
+    3      90         0
+    4     400        -1
+    5     200         1
+
+Implementing Best Fit...
+
+-1: Not Allocated...
+ PNo.  P Size Block No.
+    1       5         0
+    2     100         2
+    3      90         1
+    4     400        -1
+    5     200         3
+
+*/

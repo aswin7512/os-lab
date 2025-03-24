@@ -1,0 +1,22 @@
+1. Initialize shared buffer shbff
+2. Initialize semaphores:
+   - empty = 1 (buffer is available)
+   - full = 0 (buffer is empty)
+
+3. Producer Thread:
+   Loop forever:
+      a. Wait on empty semaphore
+      b. Get input from user into shbff
+      c. Signal full semaphore
+
+4. Consumer Thread:
+   Loop forever:
+      a. Wait on full semaphore
+      b. Read and display message from shbff
+      c. Signal empty semaphore
+
+5. In main():
+   a. Initialize semaphores
+   b. Create producer and consumer threads
+   c. Wait for threads to complete (infinite loop)
+

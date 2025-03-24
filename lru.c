@@ -53,5 +53,35 @@ int main() {
         else
             printf("         ---> Fault %d\n", ++fc);
     }
+    printf("\nPage Fault: %d\n", fc);
+	printf("Page Hit: %d\n", hc);
     return 0;
 }
+
+
+
+
+/*
+
+Enter Length of reference string: 10
+Enter reference string: 1 5 3 8 5 9 8 4 2 0
+Enter frame width: 3
+
+###Implementing LRU...
+
+Access => Page In Memory ---> Fault/Hit
+1      => 1 * *          ---> Fault 1
+5      => 1 5 *          ---> Fault 2
+3      => 1 5 3          ---> Fault 3
+8      => 8 5 3          ---> Fault 4
+5      => 8 5 3          ---> Hit 1
+9      => 8 5 9          ---> Fault 5
+8      => 8 5 9          ---> Hit 2
+4      => 8 4 9          ---> Fault 6
+2      => 8 4 2          ---> Fault 7
+0      => 0 4 2          ---> Fault 8
+
+Page Fault: 8
+Page Hit: 2
+
+*/
